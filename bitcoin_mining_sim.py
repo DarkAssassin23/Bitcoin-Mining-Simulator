@@ -59,7 +59,8 @@ def generateTransactions():
 # and all processes are ended
 def startMiners(blockNumber, transactions, previousHash):
     queue = Queue()
-    
+
+    segmentSize = sys.maxsize // numCPUs
     segmentStart = 0
     for p in range(numCPUs):
         if(not(p==0)):
@@ -86,7 +87,6 @@ def showResults(nonce, hashVal, time):
 
 if __name__=='__main__':
     runTimes = []
-    segmentSize = sys.maxsize
 
     try:
         print("Mining started...")
